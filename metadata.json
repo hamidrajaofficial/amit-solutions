@@ -1,0 +1,8 @@
+{
+  "name": "AMIT Solutions",
+  "description": "Enterprise digital marketing growth engines and high-performance IT infrastructure solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

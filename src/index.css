@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+html {
+  font-size: 17px;
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-alternate-gothic {
+  font-family: 'Alternate Gothic', 'League Gothic', 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Custom glow utilities */
+.glow-green {
+  box-shadow: 0 0 30px -5px rgba(0, 150, 86, 0.4);
+}
+
+.glow-subtle {
+  box-shadow: 0 10px 40px -10px rgba(0, 25, 101, 0.7);
+}
+
+@keyframes text-shimmer-navy {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes text-shimmer-glow {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.animated-primary-text {
+  background: linear-gradient(
+    90deg,
+    #001965 0%,
+    #002da8 25%,
+    #001965 50%,
+    #0047e0 75%,
+    #001965 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer-navy 3.5s linear infinite;
+  display: inline-block;
+}
+
+.animated-light-text {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #5eead4 25%,
+    #009656 50%,
+    #93c5fd 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer-glow 3.5s linear infinite;
+  display: inline-block;
+}
