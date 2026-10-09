@@ -144,14 +144,14 @@ export const ServicesCarouselSection: React.FC<ServicesCarouselSectionProps> = (
               <div
                 key={service.id}
                 onClick={() => setActiveCardIndex(service.id)}
-                className={`rounded-[2px] p-6 flex flex-col justify-between text-left transition-all duration-300 cursor-pointer h-[350px] ${
+                className={`rounded-[2px] p-6 flex flex-col justify-between text-left transition-all duration-300 cursor-pointer min-h-[380px] h-full ${
                   isActive
                     ? 'bg-[#EAF8F1] border border-emerald-200/90 text-neutral-900 shadow-lg shadow-emerald-900/5'
                     : 'bg-white border border-slate-200/90 text-neutral-900 shadow-xs hover:shadow-md hover:border-slate-300 hover:-translate-y-0.5'
                 }`}
               >
                 {/* Upper Content: Icon + Title in 1 Row, then Description below */}
-                <div className="space-y-4">
+                <div className="space-y-4 flex-1 flex flex-col">
                   
                   {/* Row 1: Heading and Icon in 1 Single Row */}
                   <div className="flex items-center gap-3">
@@ -173,9 +173,9 @@ export const ServicesCarouselSection: React.FC<ServicesCarouselSectionProps> = (
                     </h3>
                   </div>
 
-                  {/* Description */}
+                  {/* Description: Full Content without truncation at 16px (0.941rem) font size */}
                   <p 
-                    className="text-xs sm:text-[13px] leading-relaxed font-normal text-neutral-600 line-clamp-4"
+                    className="text-[0.941rem] leading-relaxed font-normal text-neutral-600 flex-1 pt-1"
                   >
                     {service.desc}
                   </p>
@@ -183,13 +183,13 @@ export const ServicesCarouselSection: React.FC<ServicesCarouselSectionProps> = (
                 </div>
 
                 {/* Bottom Button: "Explore More" */}
-                <div className="pt-4 flex justify-start">
+                <div className="pt-5 flex justify-start">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       onOpenConsultation();
                     }}
-                    className={`px-5 py-2 rounded-[2px] text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                    className={`px-5 py-2.5 rounded-[2px] text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                       isActive
                         ? 'border border-emerald-300 bg-white hover:bg-[#001965] text-[#001965] hover:text-white shadow-xs'
                         : 'border border-slate-300 text-[#001965] bg-white hover:bg-[#001965] hover:text-white'
