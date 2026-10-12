@@ -14,10 +14,12 @@ import {
 
 interface ServicesCarouselSectionProps {
   onOpenConsultation: () => void;
+  onNavigateToSeo?: () => void;
 }
 
 export const ServicesCarouselSection: React.FC<ServicesCarouselSectionProps> = ({ 
-  onOpenConsultation 
+  onOpenConsultation,
+  onNavigateToSeo
 }) => {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [pageIndex, setPageIndex] = useState(0);
@@ -187,7 +189,11 @@ export const ServicesCarouselSection: React.FC<ServicesCarouselSectionProps> = (
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      onOpenConsultation();
+                      if (service.title === 'Search Engine Optimization' && onNavigateToSeo) {
+                        onNavigateToSeo();
+                      } else {
+                        onOpenConsultation();
+                      }
                     }}
                     className={`px-5 py-2.5 rounded-[2px] text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                       isActive

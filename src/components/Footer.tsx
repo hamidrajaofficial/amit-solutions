@@ -11,9 +11,13 @@ import {
 
 interface FooterProps {
   onOpenConsultation: () => void;
+  onNavigateToSeo?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
+export const Footer: React.FC<FooterProps> = ({ 
+  onOpenConsultation,
+  onNavigateToSeo,
+}) => {
   return (
     <footer className="w-full bg-[#001040] text-slate-300 border-t border-slate-800">
       
@@ -74,7 +78,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300/80">
               <li>
-                <button onClick={onOpenConsultation} className="hover:text-white transition-colors cursor-pointer text-left">
+                <button 
+                  onClick={() => {
+                    if (onNavigateToSeo) {
+                      onNavigateToSeo();
+                    } else {
+                      onOpenConsultation();
+                    }
+                  }} 
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
                   Search Engine Optimization
                 </button>
               </li>

@@ -14,9 +14,17 @@ import {
 
 interface HeaderProps {
   onOpenConsultation: () => void;
+  onNavigateToSeo?: () => void;
+  onNavigateHome?: () => void;
+  currentView?: 'home' | 'seo';
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
+export const Header: React.FC<HeaderProps> = ({ 
+  onOpenConsultation,
+  onNavigateToSeo,
+  onNavigateHome,
+  currentView = 'home'
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
@@ -150,7 +158,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
               href="#home" 
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (onNavigateHome) {
+                  onNavigateHome();
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
               }}
               className="flex items-center group py-1 cursor-pointer"
             >
@@ -174,10 +186,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
                 <a
                   href={link.href}
                   onClick={(e) => {
-                    const target = document.querySelector(link.href);
-                    if (target) {
+                    if (currentView !== 'home' && onNavigateHome) {
                       e.preventDefault();
-                      target.scrollIntoView({ behavior: 'smooth' });
+                      onNavigateHome();
+                      setTimeout(() => {
+                        const target = document.querySelector(link.href);
+                        if (target) target.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    } else {
+                      const target = document.querySelector(link.href);
+                      if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                      }
                     }
                   }}
                   className="flex items-center gap-1 transition-colors hover:text-[#009656] text-neutral-800 py-2 cursor-pointer font-medium"
@@ -196,11 +217,21 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
                         key={sIdx}
                         onClick={() => {
                           setActiveDropdown(null);
-                          const target = document.querySelector(link.href);
-                          if (target) {
-                            target.scrollIntoView({ behavior: 'smooth' });
+                          if (sub === 'Search Engine Optimization (SEO)' && onNavigateToSeo) {
+                            onNavigateToSeo();
+                          } else if (currentView !== 'home' && onNavigateHome) {
+                            onNavigateHome();
+                            setTimeout(() => {
+                              const target = document.querySelector(link.href);
+                              if (target) target.scrollIntoView({ behavior: 'smooth' });
+                            }, 100);
                           } else {
-                            onOpenConsultation();
+                            const target = document.querySelector(link.href);
+                            if (target) {
+                              target.scrollIntoView({ behavior: 'smooth' });
+                            } else {
+                              onOpenConsultation();
+                            }
                           }
                         }}
                         className="w-full text-left px-4 py-2 text-xs font-medium text-neutral-700 hover:bg-[#F4F7FB] hover:text-[#009656] transition-colors block cursor-pointer"
@@ -250,11 +281,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-t border-slate-200 px-6 py-5 space-y-4 shadow-xl">
           <div className="flex items-center pb-3 border-b border-slate-100">
-            <img 
-              src={brandLogo} 
-              alt="AMIT Logo" 
-              className="h-[62px] w-auto max-h-[64px] object-contain"
-            />
+            <a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+                if (onNavigateHome) {
+                  onNavigateHome();
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+              className="cursor-pointer"
+            >
+              <img 
+                src={brandLogo} 
+                alt="AMIT Logo" 
+                className="h-[62px] w-auto max-h-[64px] object-contain"
+              />
+            </a>
           </div>
           <div className="space-y-2">
             {navLinks.map((link) => (
@@ -263,16 +308,38 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
                   href={link.href}
                   onClick={(e) => {
                     setMobileMenuOpen(false);
-                    const target = document.querySelector(link.href);
-                    if (target) {
+                    if (currentView !== 'home' && onNavigateHome) {
                       e.preventDefault();
-                      target.scrollIntoView({ behavior: 'smooth' });
+                      onNavigateHome();
+                      setTimeout(() => {
+                        const target = document.querySelector(link.href);
+                        if (target) target.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    } else {
+                      const target = document.querySelector(link.href);
+                      if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                      }
                     }
                   }}
                   className="block py-1.5 text-sm font-bold text-neutral-800 hover:text-[#009656] transition-colors"
                 >
                   {link.name}
                 </a>
+                {link.name === 'Services' && (
+                  <div className="pl-3 py-1 space-y-1">
+                    <button
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onNavigateToSeo) onNavigateToSeo();
+                      }}
+                      className="block text-xs font-semibold text-[#009656] hover:underline py-1 text-left"
+                    >
+                      &bull; Search Engine Optimization (SEO) &rarr;
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>

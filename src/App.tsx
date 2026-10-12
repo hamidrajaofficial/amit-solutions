@@ -17,20 +17,44 @@ import { WhyClientsSaySection } from './components/WhyClientsSaySection';
 import { PreFooterCTASection } from './components/PreFooterCTASection';
 import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
+import { SeoServicePage } from './components/services/SeoServicePage';
 
 export default function App() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const [currentView, setCurrentView] = useState<'home' | 'seo'>('home');
+
+  const handleNavigateToSeo = () => {
+    setCurrentView('seo');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateHome = () => {
+    setCurrentView('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-[#009656] selection:text-white">
       {/* Top Header */}
-      <Header onOpenConsultation={() => setIsConsultationOpen(true)} />
+      <Header 
+        onOpenConsultation={() => setIsConsultationOpen(true)}
+        onNavigateToSeo={handleNavigateToSeo}
+        onNavigateHome={handleNavigateHome}
+        currentView={currentView}
+      />
 
       <main className="w-full">
-        {/* 1. Hero Section */}
-        <section id="home">
-          <Hero onOpenConsultation={() => setIsConsultationOpen(true)} />
-        </section>
+        {currentView === 'seo' ? (
+          <SeoServicePage 
+            onOpenConsultation={() => setIsConsultationOpen(true)}
+            onNavigateHome={handleNavigateHome}
+          />
+        ) : (
+          <>
+            {/* 1. Hero Section */}
+            <section id="home">
+              <Hero onOpenConsultation={() => setIsConsultationOpen(true)} />
+            </section>
 
         {/* 2. About Company Section */}
         <section id="about-us">
@@ -39,7 +63,10 @@ export default function App() {
 
         {/* 3. What We Do - Full-Service Digital Marketing Agency Carousel Section */}
         <section id="services">
-          <ServicesCarouselSection onOpenConsultation={() => setIsConsultationOpen(true)} />
+          <ServicesCarouselSection 
+            onOpenConsultation={() => setIsConsultationOpen(true)} 
+            onNavigateToSeo={handleNavigateToSeo}
+          />
         </section>
 
         {/* 4. Get Your Business Visible Online With Us - Featured Growth Showcase & Case Study */}
@@ -82,10 +109,15 @@ export default function App() {
         <section id="contact">
           <PreFooterCTASection onOpenConsultation={() => setIsConsultationOpen(true)} />
         </section>
+          </>
+        )}
       </main>
 
       {/* Main Agency Footer */}
-      <Footer onOpenConsultation={() => setIsConsultationOpen(true)} />
+      <Footer 
+        onOpenConsultation={() => setIsConsultationOpen(true)} 
+        onNavigateToSeo={handleNavigateToSeo}
+      />
 
       {/* Interactive Free Audit / Consultation / Demo Modal */}
       <ConsultationModal
