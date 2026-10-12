@@ -140,11 +140,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
         </div>
       </div>
 
-      {/* 2. Main Navigation Bar with exact height of 70px (h-[70px]) */}
-      <div className="w-full bg-white h-[70px] px-4 sm:px-8 lg:px-12">
+      {/* 2. Main Navigation Bar with height accommodating enlarged logo */}
+      <div className="w-full bg-white h-[80px] px-4 sm:px-8 lg:px-12">
         <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between">
           
-          {/* Brand Logo */}
+          {/* Brand Logo - Enlarged Size */}
           <div className="flex items-center">
             <a 
               href="#home" 
@@ -157,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
               <img 
                 src={brandLogo} 
                 alt="AMIT Logo" 
-                className="h-[55px] w-auto max-h-[55px] object-contain transition-transform duration-200 group-hover:scale-105" 
+                className="h-[68px] sm:h-[72px] w-auto max-h-[74px] object-contain transition-transform duration-200 group-hover:scale-105" 
               />
             </a>
           </div>
@@ -190,7 +190,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
 
                 {/* Dropdown Menu */}
                 {link.hasDropdown && activeDropdown === link.name && link.subItems && (
-                  <div className="absolute top-[65px] left-0 w-64 bg-white border border-slate-200 rounded-xl shadow-xl py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="absolute top-[75px] left-0 w-64 bg-white border border-slate-200 rounded-xl shadow-xl py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                     {link.subItems.map((sub, sIdx) => (
                       <button
                         key={sIdx}
@@ -253,7 +253,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
             <img 
               src={brandLogo} 
               alt="AMIT Logo" 
-              className="h-[50px] w-auto max-h-[50px] object-contain"
+              className="h-[62px] w-auto max-h-[64px] object-contain"
             />
           </div>
           <div className="space-y-2">
