@@ -12,11 +12,15 @@ import {
 interface FooterProps {
   onOpenConsultation: () => void;
   onNavigateToSeo?: () => void;
+  onNavigateToFullFunnelLeadGen?: () => void;
+  onNavigateToLocal?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ 
   onOpenConsultation,
   onNavigateToSeo,
+  onNavigateToFullFunnelLeadGen,
+  onNavigateToLocal,
 }) => {
   return (
     <footer className="w-full bg-[#001040] text-slate-300 border-t border-slate-800">
@@ -121,8 +125,17 @@ export const Footer: React.FC<FooterProps> = ({
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300/80">
               <li>
-                <button onClick={onOpenConsultation} className="hover:text-white transition-colors cursor-pointer text-left">
-                  B2B Lead Generation
+                <button 
+                  onClick={() => {
+                    if (onNavigateToFullFunnelLeadGen) {
+                      onNavigateToFullFunnelLeadGen();
+                    } else {
+                      onOpenConsultation();
+                    }
+                  }} 
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Full-Funnel Lead Generation
                 </button>
               </li>
               <li>
@@ -131,7 +144,16 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
-                <button onClick={onOpenConsultation} className="hover:text-white transition-colors cursor-pointer text-left">
+                <button 
+                  onClick={() => {
+                    if (onNavigateToLocal) {
+                      onNavigateToLocal();
+                    } else {
+                      onOpenConsultation();
+                    }
+                  }} 
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
                   Local SEO &amp; Maps Domination
                 </button>
               </li>

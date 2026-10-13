@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import { ServiceHeroSection } from './ServiceHeroSection';
+import { SeoCaseStudiesSection } from './SeoCaseStudiesSection';
+import { ServiceHowWeWorkSection } from './ServiceHowWeWorkSection';
+import { SeoConsultationRoadmapSection } from './SeoConsultationRoadmapSection';
+import { SeoWhyClientsSaySection } from './SeoWhyClientsSaySection';
+import { SeoPreFooterCTASection } from './SeoPreFooterCTASection';
+import { FaqSection } from '../common/FaqSection';
+import { seoFaqCategories } from '../../data/faqData';
 import seoHeroBg from '../../assets/images/seo_agency_hero_bg_1791811156291.jpg';
 import { 
   Search, 
@@ -39,12 +46,8 @@ export const SeoServicePage: React.FC<SeoServicePageProps> = ({
   onOpenConsultation,
   onNavigateHome,
 }) => {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeChallengeTab, setActiveChallengeTab] = useState<string | null>('01');
   const [activeStrategicTab, setActiveStrategicTab] = useState<number>(0);
-  const [auditUrl, setAuditUrl] = useState('');
-  const [auditEmail, setAuditEmail] = useState('');
-  const [auditSubmitted, setAuditSubmitted] = useState(false);
 
   const handleToggleChallengeTab = (id: string) => {
     setActiveChallengeTab(prev => (prev === id ? null : id));
@@ -253,56 +256,6 @@ export const SeoServicePage: React.FC<SeoServicePageProps> = ({
     },
   ];
 
-  const seoServicesInclude = [
-    {
-      icon: MapPin,
-      title: 'Local SEO',
-      desc: 'For local businesses, we optimize your Google Business Profile and NAP consistency to capture “near me” intent. This ensures your brand appears exactly when local customers are ready to convert into revenue.',
-      tag: 'Google Maps',
-    },
-    {
-      icon: Search,
-      title: 'Intent-Based Keyword Research',
-      desc: 'We identify the specific keywords that drive traffic and revenue. By using search intent and topic clusters, we ensure your content matches exactly what your customers are searching for, providing a strategic roadmap for all on-page optimization.',
-      tag: 'High-Intent Demand',
-    },
-    {
-      icon: FileText,
-      title: 'High-Value Content',
-      desc: 'Our SEO content service pairs you with expert writers across diverse verticals. By establishing custom brand guidelines, we produce authoritative, E-E-A-T-driven content that turns search intent into customers and measurable ROI.',
-      tag: 'E-E-A-T Authority',
-    },
-    {
-      icon: Cpu,
-      title: 'Technical SEO Audit',
-      desc: 'Our SEO audits identify errors in site architecture, Core Web Vitals and we audit your site’s “crawling efficiency” for AI LLM bots to ensure your brand is cited in generative answers.',
-      tag: 'Core Web Vitals',
-    },
-    {
-      icon: Target,
-      title: 'Competitor Analysis',
-      desc: 'We perform in-depth competitor analysis to help you rank for niche and long-tail keywords. In one case, we helped a home services franchise with 60+ U.S. locations see 50× more growth than competitors during a six-month SEO pilot, proving our approach delivers measurable results.',
-      tag: 'Market Gap Analysis',
-    },
-    {
-      icon: Video,
-      title: 'Video & Image SEO',
-      desc: 'We optimize video and audio assets for Google’s 2026 Multimodal search, ensuring your brand captures “Visual Search” and voice intent across all high-volume media channels.',
-      tag: 'Multimodal Search',
-    },
-    {
-      icon: Sparkles,
-      title: 'AI Search Visibility',
-      desc: 'We integrate AI optimization into our core strategy because AI visibility is now a requirement. By prioritizing E-E-A-T signals, structured data, authority and entity mapping, we get your brand cited in generative results to protect and grow your traffic.',
-      tag: 'Generative Citations',
-    },
-    {
-      icon: BarChart3,
-      title: 'Analytics & Reporting',
-      desc: 'We monitor performance using GA4, Search Console, Semrush, and proprietary tools. Through custom dashboards, we provide total transparency into your revenue drivers while proactively pivoting strategies to maximize ROI.',
-      tag: 'GA4 & Attribution',
-    },
-  ];
 
   const challengesAndSolutions = [
     {
@@ -359,59 +312,7 @@ export const SeoServicePage: React.FC<SeoServicePageProps> = ({
     },
   ];
 
-  const steps = [
-    {
-      number: '01',
-      title: 'Comprehensive SEO & Competitor Audit',
-      desc: 'We analyze your current domain health, backlink profile, technical roadblocks, and competitor traffic sources to establish a baseline growth benchmark.',
-    },
-    {
-      number: '02',
-      title: 'Keyword Strategy & Content Roadmap',
-      desc: 'We map out target search terms by search intent (informational vs. commercial transactional) and design a quarterly publishing and on-page optimization roadmap.',
-    },
-    {
-      number: '03',
-      title: 'Technical Implementation & On-Page Fixes',
-      desc: 'Our technical team rectifies schema tags, site speed issues, URL structures, internal linking, and meta assets across all priority landing pages.',
-    },
-    {
-      number: '04',
-      title: 'Digital PR & Authority Link Building',
-      desc: 'We execute targeted outreach to reputable industry publications, obtaining contextually relevant backlinks that strengthen your site’s ranking authority.',
-    },
-    {
-      number: '05',
-      title: 'Weekly Tracking & Revenue Attribution',
-      desc: 'Transparent live dashboards report keyword movements, organic impression gains, and verified inbound lead conversions with zero vanity fluff.',
-    },
-  ];
 
-  const faqs = [
-    {
-      q: 'How long does it take to see measurable SEO results?',
-      a: 'Most clients begin observing noticeable ranking improvements and indexation traction within 30 to 60 days. Substantial revenue and top-3 keyword rankings typically compound significantly between months 3 and 6, delivering sustainable ROI for years to come.',
-    },
-    {
-      q: 'Do you guarantee #1 rankings on Google?',
-      a: 'No ethical agency can guarantee specific #1 positions because Google’s algorithms continually update. However, our proven methodology systematically ranks clients on Page 1 across high-value commercial search terms, backed by verified case studies.',
-    },
-    {
-      q: 'What is the difference between Local SEO and National SEO?',
-      a: 'Local SEO targets geographic keywords and the Google Map Pack to attract nearby clients within specific service areas, while National SEO targets broader commercial intent searches across entire countries without geographic constraints.',
-    },
-    {
-      q: 'How do you prevent penalties from Google algorithm updates?',
-      a: 'We strictly practice 100% white-hat, Google-compliant SEO. We build authentic content for real human users, optimize technical infrastructure, and earn genuine editorial links without automated link schemes or spammy tactics.',
-    },
-  ];
-
-  const handleAuditSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (auditUrl.trim()) {
-      setAuditSubmitted(true);
-    }
-  };
 
   return (
     <div className="w-full bg-white">
@@ -1020,8 +921,18 @@ export const SeoServicePage: React.FC<SeoServicePageProps> = ({
         </div>
       </section>
 
-      {/* 4. Our SEO Services Include Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F4F7FB]/70 border-b border-slate-200/80 relative">
+      {/* Proven Case Studies - Creating a 360° Experience (SEO Customized) */}
+      <SeoCaseStudiesSection onOpenConsultation={onOpenConsultation} />
+
+      {/* How We Work Process Timeline (Matching Screenshot with Authentic Branding) */}
+      <ServiceHowWeWorkSection 
+        titlePrefix="Here's Exactly "
+        titleHighlight="What Happens Next"
+        subtitle="That's why we take a different approach — we listen carefully, guide you step-by-step, and create a clear, personalized SEO ranking roadmap."
+      />
+
+      {/* Comparison Section: Traditional Agencies vs AMIT Solutions (Following Brand Language) */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
           
           {/* Section Header */}
@@ -1031,16 +942,17 @@ export const SeoServicePage: React.FC<SeoServicePageProps> = ({
             <div className="flex justify-center">
               <div className="inline-flex items-center justify-center gap-2 px-3.5 py-1 rounded-full bg-[#009656]/10 text-xs sm:text-sm font-bold text-[#009656] tracking-wide">
                 <span className="w-2 h-2 rounded-full bg-[#009656] animate-pulse" />
-                <span>Full-Spectrum Solutions</span>
+                <span>Agency Comparison</span>
               </div>
             </div>
 
-            {/* Main Headline */}
+            {/* Main Headline in Brand Navy and Emerald */}
             <h2 
-              className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight leading-[1.2] text-[#001965]"
+              className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight leading-[1.2] text-balance text-center"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
-              Our SEO Services Include
+              <span className="text-[#001965]">AMIT Solutions SEO Services Are </span>
+              <span className="text-[#009656]">Engineered Differently</span>
             </h2>
 
             {/* Decorative Brand Divider */}
@@ -1054,256 +966,255 @@ export const SeoServicePage: React.FC<SeoServicePageProps> = ({
 
             {/* Subtitle Description */}
             <p className="text-[1rem] text-neutral-600 leading-relaxed font-normal max-w-3xl mx-auto text-center">
-              Every search campaign is custom-engineered to match your industry vertical, capture ready-to-buy prospects, and secure compounding market share across classical and generative AI search engines.
+              Discover why scaling businesses choose AMIT Solutions over traditional agencies that rely on rigid contracts, junior staff, and opaque reporting.
             </p>
 
           </div>
 
-          {/* 8 Cards in 4-column Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 items-stretch">
-            {seoServicesInclude.map((service, idx) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white rounded-[2px] p-6 sm:p-7 border border-slate-200/90 shadow-xs hover:shadow-lg hover:border-[#009656]/50 transition-all duration-300 flex flex-col justify-between group h-full text-left"
-                >
-                  <div className="space-y-4 flex-1 flex flex-col">
-                    {/* Header Row: Heading and Icon in 1 Single Row */}
-                    <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-[2px] shrink-0 flex items-center justify-center bg-[#F4F7FB] text-[#001965] border border-slate-200/80 group-hover:bg-[#001965] group-hover:text-white transition-colors shadow-xs">
-                        <Icon className="w-5 h-5 text-current" />
-                      </div>
-
-                      <h3 
-                        className="text-base sm:text-[17px] font-bold tracking-tight leading-snug text-[#001965] group-hover:text-[#009656] transition-colors"
+          {/* 3-Column Comparison Table Container */}
+          <div className="max-w-6xl mx-auto bg-white rounded-2xl border border-slate-200/90 shadow-xl overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse min-w-[760px]">
+                
+                {/* Table Header */}
+                <thead>
+                  <tr className="border-b border-slate-200">
+                    
+                    {/* Column 1 Header: Featured Features */}
+                    <th className="w-[30%] p-5 sm:p-6 bg-slate-50 text-left align-top">
+                      <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
+                        Evaluation Matrix
+                      </span>
+                      <span 
+                        className="text-base sm:text-lg font-bold text-[#001965]"
                         style={{ fontFamily: "'Outfit', sans-serif" }}
                       >
-                        {service.title}
-                      </h3>
-                    </div>
+                        Featured Features
+                      </span>
+                    </th>
 
-                    {/* Content full width and 16px font size */}
-                    <p className="text-[1rem] text-neutral-600 leading-relaxed font-normal flex-1 pt-1">
-                      {service.desc}
-                    </p>
-                  </div>
+                    {/* Column 2 Header: The Traditional Agency */}
+                    <th className="w-[35%] p-5 sm:p-6 bg-rose-50/50 border-x border-slate-200 text-left align-top">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-bold uppercase tracking-wider mb-2">
+                        <X className="w-3.5 h-3.5 stroke-[2.5]" />
+                        <span>The Traditional Agency</span>
+                      </div>
+                      <h4 
+                        className="text-base sm:text-lg font-bold text-slate-800"
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        The Outdated Agency Model
+                      </h4>
+                      <p className="text-xs text-slate-500 font-normal mt-0.5">
+                        Rigid retainers &amp; junior staff execution
+                      </p>
+                    </th>
 
-                  {/* Card Footer */}
-                  <div className="pt-5 border-t border-slate-100 mt-5 flex items-center justify-between">
-                    <button
-                      onClick={onOpenConsultation}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#001965] group-hover:text-[#009656] transition-colors cursor-pointer"
+                    {/* Column 3 Header: Alvi Digital Marketing Agency / AMIT Solutions */}
+                    <th className="w-[35%] p-5 sm:p-6 bg-[#001965] text-left text-white align-top relative overflow-hidden">
+                      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#009656] via-emerald-400 to-[#009656]" />
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#009656] text-white text-xs font-bold uppercase tracking-wider mb-2 shadow-sm">
+                        <Sparkles className="w-3.5 h-3.5" />
+                        <span>Alvi Digital Marketing Agency (AMIT Solutions)</span>
+                      </div>
+                      <h4 
+                        className="text-base sm:text-lg font-bold text-white flex items-center gap-2"
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        <span>The Engineered Advantage</span>
+                      </h4>
+                      <p className="text-xs text-slate-300 font-normal mt-0.5">
+                        Senior search directors &amp; live ROI attribution
+                      </p>
+                    </th>
+
+                  </tr>
+                </thead>
+
+                {/* Table Body */}
+                <tbody className="divide-y divide-slate-100 text-sm">
+                  {[
+                    {
+                      feature: 'Contract Terms & Commitments',
+                      featureDesc: 'Retainer flexibility and contractual obligations',
+                      traditional: {
+                        tag: 'Rigid 6-12 Month Retainers',
+                        desc: 'Locked into multi-quarter hostage retainers with punitive cancellation fees regardless of ranking results.',
+                      },
+                      amit: {
+                        tag: '100% Performance-Driven & Agile',
+                        desc: 'Month-to-month flexibility. We earn your business every 30 days based on demonstrable ranking and revenue gains.',
+                      }
+                    },
+                    {
+                      feature: 'Dedicated Talent & Seniority',
+                      featureDesc: 'Who actually works on your search campaigns daily',
+                      traditional: {
+                        tag: 'Inexperienced Junior Staff',
+                        desc: 'Pitched by charismatic senior partners, then silently handed off to entry-level interns and generalists.',
+                      },
+                      amit: {
+                        tag: 'Senior Dedicated Search Architects',
+                        desc: '10+ year veteran SEO directors and technical search architects actively designing and executing your sprints.',
+                      }
+                    },
+                    {
+                      feature: 'Methodology & Algorithm Safety',
+                      featureDesc: 'Compliance with Google Core Updates and standards',
+                      traditional: {
+                        tag: 'Risky Shortcuts & Black-Hat Tactics',
+                        desc: 'Unsafe PBN link schemes and automated shortcuts that leave your domain vulnerable to catastrophic penalties.',
+                      },
+                      amit: {
+                        tag: '100% White-Hat & AI-Citation Compliant',
+                        desc: 'Future-proof optimization strictly aligned with Google Search Essentials, Core Updates, and generative engine standards.',
+                      }
+                    },
+                    {
+                      feature: 'Reporting & Business Attribution',
+                      featureDesc: 'Measurement of actual business revenue vs vanity metrics',
+                      traditional: {
+                        tag: 'Vague PDFs & Vanity Impressions',
+                        desc: 'Generic monthly PDFs filled with confusing graphs and impressions that fail to correlate with actual sales.',
+                      },
+                      amit: {
+                        tag: '24/7 Live Pipeline Revenue Attribution',
+                        desc: 'Live executive dashboards mapping keyword visibility directly to qualified inquiries, demos, and verifiable ROI.',
+                      }
+                    },
+                    {
+                      feature: 'Turnaround & Communication',
+                      featureDesc: 'Sprint agility, execution speed, and direct responsiveness',
+                      traditional: {
+                        tag: 'Weeks of Bureaucracy & Red Tape',
+                        desc: 'Slow turnaround times, impersonal ticket queues, and unresponsive junior account managers.',
+                      },
+                      amit: {
+                        tag: 'Bi-Weekly Sprints & Direct Slack Access',
+                        desc: 'Rapid 14-day execution cycles, dedicated private Slack channel, and proactive weekly strategy updates.',
+                      }
+                    },
+                    {
+                      feature: 'Strategy Personalization',
+                      featureDesc: 'How the strategy is tailored for your market vertical',
+                      traditional: {
+                        tag: 'Cookie-Cutter Generic Checklists',
+                        desc: 'One-size-fits-all checklists recycled across dozens of clients with zero competitive gap research.',
+                      },
+                      amit: {
+                        tag: 'Custom Vertical Growth Blueprint',
+                        desc: 'Bespoke entity clustering, competitor query reverse-engineering, and tailored commercial intent funnels.',
+                      }
+                    },
+                    {
+                      feature: 'AI Overviews & GEO Optimization',
+                      featureDesc: 'Generative Engine Optimization (ChatGPT, Gemini, Perplexity)',
+                      traditional: {
+                        tag: 'Ignored or Treated as an Afterthought',
+                        desc: 'Outdated keyword stuffing with zero schema knowledge graph mapping for generative AI answer engines.',
+                      },
+                      amit: {
+                        tag: 'Full Generative Engine Optimization (GEO)',
+                        desc: 'Knowledge graph entity structuring and citation frameworks that get your brand cited in Google AI Overviews.',
+                      }
+                    }
+                  ].map((row, idx) => (
+                    <tr 
+                      key={idx}
+                      className={idx % 2 === 0 ? 'bg-white hover:bg-slate-50/60 transition-colors' : 'bg-slate-50/40 hover:bg-slate-50 transition-colors'}
                     >
-                      <span>Inquire About This Service</span>
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                    </button>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#009656]/10 text-[#009656]">
-                      {service.tag}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                      {/* Col 1: Feature Title & Subtitle */}
+                      <td className="p-4 sm:p-5 align-top">
+                        <div className="font-bold text-[#001965] text-sm sm:text-[15px]">
+                          {row.feature}
+                        </div>
+                        <div className="text-xs text-slate-500 font-normal mt-0.5">
+                          {row.featureDesc}
+                        </div>
+                      </td>
 
-        </div>
-      </section>
+                      {/* Col 2: Traditional Agencies */}
+                      <td className="p-4 sm:p-5 align-top bg-rose-50/15 border-x border-slate-200/80">
+                        <div className="flex items-start gap-2.5">
+                          <div className="w-5 h-5 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5">
+                            <X className="w-3 h-3 stroke-[2.5]" />
+                          </div>
+                          <div>
+                            <span className="font-bold text-slate-800 text-xs sm:text-[13px] block">
+                              {row.traditional.tag}
+                            </span>
+                            <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                              {row.traditional.desc}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
 
-      {/* 4. Instant Free SEO Audit Request Card */}
-      <section className="py-14 sm:py-16 bg-white border-b border-slate-200/80">
-        <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
-          <div className="bg-[#001965] rounded-2xl p-8 sm:p-12 text-white relative overflow-hidden shadow-xl border border-white/10">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-[#009656]/20 rounded-full blur-3xl pointer-events-none" />
-            
-            <div className="relative z-10 max-w-2xl mx-auto text-center space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-bold text-[#009656] tracking-wide">
-                <Zap className="w-3.5 h-3.5 text-[#009656]" />
-                <span>Instant Growth Audit</span>
-              </div>
-              
-              <h3 
-                className="text-2xl sm:text-3xl font-bold tracking-tight text-white"
-                style={{ fontFamily: "'Outfit', sans-serif" }}
-              >
-                Want to know why your competitors outrank you?
-              </h3>
-              
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                Enter your website URL below. Our technical SEO team will generate an in-depth 24-point audit revealing your biggest keyword and ranking opportunities.
-              </p>
+                      {/* Col 3: AMIT Solutions */}
+                      <td className="p-4 sm:p-5 align-top bg-emerald-50/30">
+                        <div className="flex items-start gap-2.5">
+                          <div className="w-5 h-5 rounded-full bg-[#009656]/15 text-[#009656] flex items-center justify-center shrink-0 mt-0.5">
+                            <Check className="w-3 h-3 stroke-[3]" />
+                          </div>
+                          <div>
+                            <span className="font-bold text-[#001965] text-xs sm:text-[13px] block">
+                              {row.amit.tag}
+                            </span>
+                            <p className="text-xs text-slate-600 leading-relaxed mt-1 font-normal">
+                              {row.amit.desc}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
 
-              {auditSubmitted ? (
-                <div className="p-4 rounded-xl bg-white/10 border border-[#009656]/40 text-center space-y-2 mt-6">
-                  <div className="inline-flex items-center gap-2 text-[#009656] font-bold text-sm">
-                    <CheckCircle2 className="w-5 h-5" />
-                    <span>Audit Request Dispatched!</span>
-                  </div>
-                  <p className="text-xs text-slate-300">
-                    Our SEO director will review {auditUrl || 'your website'} and deliver your customized audit within 24 business hours.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleAuditSubmit} className="pt-4 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-                  <div className="relative flex-1">
-                    <Globe className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. yourwebsite.com"
-                      value={auditUrl}
-                      onChange={(e) => setAuditUrl(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-white text-slate-900 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#009656] shadow-inner"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="px-6 py-3 bg-[#009656] hover:bg-[#007f49] text-white font-bold text-sm rounded-lg shadow-md transition-all active:scale-95 cursor-pointer shrink-0"
-                  >
-                    Analyze My Website
-                  </button>
-                </form>
-              )}
+                {/* Table Footer with Action Button */}
+                <tfoot>
+                  <tr className="border-t border-slate-200 bg-slate-50">
+                    <td className="p-4 sm:p-5 text-xs text-slate-500 font-medium">
+                      Ready to experience the difference?
+                    </td>
+                    <td className="p-4 sm:p-5 border-x border-slate-200/80 text-xs text-rose-600 font-medium">
+                      Risk: Budget burn &amp; locked retainers
+                    </td>
+                    <td className="p-4 sm:p-5 bg-emerald-50/40">
+                      <button
+                        onClick={onOpenConsultation}
+                        className="w-full py-3 px-4 rounded-lg bg-[#001965] hover:bg-[#009656] text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-md flex items-center justify-center gap-2 group cursor-pointer"
+                      >
+                        <span>Experience AMIT Solutions</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </button>
+                    </td>
+                  </tr>
+                </tfoot>
 
-              <p className="text-[11px] text-slate-400 font-normal pt-1">
-                Zero automated fluff. 100% human-verified analysis by senior strategists.
-              </p>
+              </table>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 5. Our 5-Step SEO Ranking Process */}
-      <section className="py-16 sm:py-20 bg-[#F8FAFD] border-b border-slate-200/80">
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-8 lg:px-12">
-          
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#009656]/10 text-xs sm:text-sm font-bold text-[#009656] tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-[#009656] animate-pulse" />
-              <span>Proven Ranking System</span>
-            </div>
-            <h2 
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#001965]"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
-            >
-              How We Take You from Invisible to Page 1
-            </h2>
-            <p className="text-[1rem] text-neutral-600 leading-relaxed font-normal">
-              A systematic, white-hat execution plan designed to generate steady keyword momentum and compound inbound lead acquisition.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 lg:gap-6">
-            {steps.map((st, i) => (
-              <div 
-                key={i}
-                className="bg-white rounded-xl p-6 border border-slate-200/90 shadow-xs relative flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-2xl font-black text-[#009656] font-mono mb-3">
-                    {st.number}
-                  </div>
-                  <h4 
-                    className="text-base font-bold text-[#001965] mb-2 leading-snug"
-                    style={{ fontFamily: "'Outfit', sans-serif" }}
-                  >
-                    {st.title}
-                  </h4>
-                  <p className="text-xs text-neutral-600 leading-relaxed font-normal">
-                    {st.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
 
         </div>
       </section>
 
-      {/* 6. Frequently Asked Questions */}
-      <section className="py-16 sm:py-20 bg-white border-b border-slate-200/80">
-        <div className="max-w-[900px] mx-auto px-4 sm:px-8">
-          
-          <div className="text-center space-y-3 mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#009656]/10 text-xs sm:text-sm font-bold text-[#009656] tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-[#009656] animate-pulse" />
-              <span>Clear Client Answers</span>
-            </div>
-            <h2 
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#001965]"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
-            >
-              SEO Frequently Asked Questions
-            </h2>
-          </div>
+      {/* Ready to Take the Next Step in Your Digital Growth? (Strategic SEO Roadmap & Consultation) */}
+      <SeoConsultationRoadmapSection onOpenConsultation={onOpenConsultation} />
 
-          <div className="space-y-3.5">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <div
-                  key={index}
-                  className="border border-slate-200 rounded-xl overflow-hidden transition-colors bg-white shadow-xs"
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full px-6 py-4.5 text-left flex items-center justify-between gap-4 font-bold text-[#001965] hover:text-[#009656] transition-colors cursor-pointer"
-                  >
-                    <span className="text-sm sm:text-base">{faq.q}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180 text-[#009656]' : ''
-                      }`}
-                    />
-                  </button>
-                  {isOpen && (
-                    <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-neutral-600 leading-relaxed border-t border-slate-100">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+      {/* What Our Clients Say (Video Stories & Verified Google Reviews) */}
+      <SeoWhyClientsSaySection onOpenConsultation={onOpenConsultation} />
 
-        </div>
-      </section>
+      {/* Frequently Asked Questions (Matching Screenshot with Category Selector + Accordion) */}
+      <FaqSection 
+        eyebrow="HELP & INFORMATION"
+        titlePrefix="Frequently Asked "
+        titleHighlight="Questions"
+        description="Everything you need to know about partnering with AMIT Solutions, our 100% white-hat methodologies, transparent pricing, and organic ranking performance."
+        categories={seoFaqCategories}
+      />
 
-      {/* 7. Bottom Call to Action */}
-      <section className="py-16 sm:py-20 bg-gradient-to-b from-[#F4F9FF] to-white text-center">
-        <div className="max-w-[800px] mx-auto px-4 sm:px-8 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#009656]/10 text-xs sm:text-sm font-bold text-[#009656] tracking-wide">
-            <ShieldCheck className="w-4 h-4 text-[#009656]" />
-            <span>Ready for Sustainable Growth</span>
-          </div>
-          
-          <h2 
-            className="text-3xl sm:text-4xl font-bold text-[#001965] tracking-tight"
-            style={{ fontFamily: "'Outfit', sans-serif" }}
-          >
-            Ready to Outrank Competitors and Scale Organic Revenue?
-          </h2>
-          
-          <p className="text-[1rem] text-neutral-600 max-w-xl mx-auto leading-relaxed">
-            Let our senior SEO strategists analyze your website, map out your highest-value keywords, and deliver a custom ranking blueprint.
-          </p>
-
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-            <button
-              onClick={onOpenConsultation}
-              className="px-8 py-3.5 bg-[#009656] hover:bg-[#007f49] text-white font-bold text-sm rounded-lg shadow-lg shadow-[#009656]/20 transition-all active:scale-95 cursor-pointer"
-            >
-              Get Free SEO Consultation
-            </button>
-            <button
-              onClick={onNavigateHome}
-              className="px-6 py-3.5 bg-white hover:bg-slate-50 text-[#001965] border border-slate-300 font-bold text-sm rounded-lg transition-all cursor-pointer"
-            >
-              Back to Home
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* Scale Your Business with AMIT Solutions (Pre-Footer CTA Section) */}
+      <SeoPreFooterCTASection onOpenConsultation={onOpenConsultation} />
 
     </div>
   );

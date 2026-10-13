@@ -15,13 +15,17 @@ import {
 interface HeaderProps {
   onOpenConsultation: () => void;
   onNavigateToSeo?: () => void;
+  onNavigateToFullFunnelLeadGen?: () => void;
+  onNavigateToLocal?: () => void;
   onNavigateHome?: () => void;
-  currentView?: 'home' | 'seo';
+  currentView?: 'home' | 'seo' | 'lead-gen' | 'local';
 }
 
 export const Header: React.FC<HeaderProps> = ({ 
   onOpenConsultation,
   onNavigateToSeo,
+  onNavigateToFullFunnelLeadGen,
+  onNavigateToLocal,
   onNavigateHome,
   currentView = 'home'
 }) => {
@@ -186,6 +190,11 @@ export const Header: React.FC<HeaderProps> = ({
                 <a
                   href={link.href}
                   onClick={(e) => {
+                    if (link.name === 'Local' && onNavigateToLocal) {
+                      e.preventDefault();
+                      onNavigateToLocal();
+                      return;
+                    }
                     if (currentView !== 'home' && onNavigateHome) {
                       e.preventDefault();
                       onNavigateHome();
@@ -219,6 +228,10 @@ export const Header: React.FC<HeaderProps> = ({
                           setActiveDropdown(null);
                           if (sub === 'Search Engine Optimization (SEO)' && onNavigateToSeo) {
                             onNavigateToSeo();
+                          } else if (sub === 'Full-Funnel Lead Generation' && onNavigateToFullFunnelLeadGen) {
+                            onNavigateToFullFunnelLeadGen();
+                          } else if (sub === 'Enterprise Local Visibility' && onNavigateToLocal) {
+                            onNavigateToLocal();
                           } else if (currentView !== 'home' && onNavigateHome) {
                             onNavigateHome();
                             setTimeout(() => {
@@ -308,6 +321,11 @@ export const Header: React.FC<HeaderProps> = ({
                   href={link.href}
                   onClick={(e) => {
                     setMobileMenuOpen(false);
+                    if (link.name === 'Local' && onNavigateToLocal) {
+                      e.preventDefault();
+                      onNavigateToLocal();
+                      return;
+                    }
                     if (currentView !== 'home' && onNavigateHome) {
                       e.preventDefault();
                       onNavigateHome();
@@ -337,6 +355,28 @@ export const Header: React.FC<HeaderProps> = ({
                       className="block text-xs font-semibold text-[#009656] hover:underline py-1 text-left"
                     >
                       &bull; Search Engine Optimization (SEO) &rarr;
+                    </button>
+                  </div>
+                )}
+                {link.name === 'Solutions' && (
+                  <div className="pl-3 py-1 space-y-1">
+                    <button
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onNavigateToFullFunnelLeadGen) onNavigateToFullFunnelLeadGen();
+                      }}
+                      className="block text-xs font-semibold text-[#007AFF] hover:underline py-1 text-left"
+                    >
+                      &bull; Full-Funnel Lead Generation &rarr;
+                    </button>
+                    <button
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onNavigateToLocal) onNavigateToLocal();
+                      }}
+                      className="block text-xs font-semibold text-[#009656] hover:underline py-1 text-left"
+                    >
+                      &bull; Enterprise Local Visibility &rarr;
                     </button>
                   </div>
                 )}
