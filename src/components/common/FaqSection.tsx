@@ -47,19 +47,29 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
         <div className="w-full max-w-3xl mx-auto text-center space-y-3.5 mb-12 sm:mb-16">
           {/* Eyebrow Pill Badge */}
           <div className="flex justify-center">
-            <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-slate-300 bg-white text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-widest shadow-xs">
+            <div className="inline-flex items-center justify-center gap-2 px-3.5 py-1 rounded-full bg-[#009656]/10 text-xs sm:text-sm font-bold text-[#009656] tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-[#009656] animate-pulse" />
               <span>{eyebrow}</span>
             </div>
           </div>
 
           {/* Main Headline in Brand Navy and Emerald */}
           <h2 
-            className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight text-center leading-[1.18]"
+            className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight text-center leading-[1.2]"
             style={{ fontFamily: "'Outfit', sans-serif" }}
           >
             <span className="text-[#001965]">{titlePrefix}</span>
             <span className="text-[#009656]">{titleHighlight}</span>
           </h2>
+
+          {/* Decorative Brand Divider */}
+          <div className="flex items-center justify-center gap-1.5 py-1">
+            <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+            <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+          </div>
 
           {/* Description */}
           <p className="text-[1rem] text-neutral-600 leading-relaxed font-normal max-w-2xl mx-auto text-center">

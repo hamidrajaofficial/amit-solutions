@@ -49,13 +49,22 @@ export const OnlineVisibilityShowcaseSection: React.FC<OnlineVisibilityShowcaseS
 
               {/* Main Headline in Primary and Secondary Colors (No Black) */}
               <h2 
-                className="text-2xl sm:text-3xl lg:text-[38px] xl:text-[40px] font-bold tracking-tight leading-[1.2]"
+                className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight leading-[1.2]"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
                 <span className="text-[#001965]">Get Your Business </span>
                 <span className="text-[#009656]">Visible Online </span>
                 <span className="text-[#001965]">With Us</span>
               </h2>
+
+              {/* Decorative Brand Divider */}
+              <div className="flex items-center gap-1.5 py-0.5">
+                <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+                <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+              </div>
 
               {/* Paragraph Content shifted from above */}
               <p className="text-[1rem] text-neutral-600 leading-relaxed font-normal">

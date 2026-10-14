@@ -61,12 +61,21 @@ export const IntegratedDigitalStrategySection: React.FC<IntegratedDigitalStrateg
 
             {/* H2 Headline in Brand White & Emerald */}
             <h2 
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white tracking-tight leading-[1.18]"
+              className="text-2xl sm:text-3xl lg:text-[40px] font-bold text-white tracking-tight leading-[1.2]"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               <span>Grow Your Business With an </span>
               <span className="text-[#009656]">Integrated Digital Strategy</span>
             </h2>
+
+            {/* Decorative Brand Divider */}
+            <div className="flex items-center gap-1.5 py-0.5">
+              <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+              <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+            </div>
 
             {/* Description Paragraph */}
             <p className="text-slate-300 text-base sm:text-[17px] leading-relaxed font-normal">

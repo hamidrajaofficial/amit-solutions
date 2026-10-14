@@ -17,8 +17,12 @@ interface HeaderProps {
   onNavigateToSeo?: () => void;
   onNavigateToFullFunnelLeadGen?: () => void;
   onNavigateToLocal?: () => void;
+  onNavigateToNearYou?: () => void;
+  onNavigateToAbout?: () => void;
+  onNavigateToContact?: () => void;
+  onNavigateToBlogs?: () => void;
   onNavigateHome?: () => void;
-  currentView?: 'home' | 'seo' | 'lead-gen' | 'local';
+  currentView?: 'home' | 'seo' | 'lead-gen' | 'local' | 'about' | 'near-you' | 'contact' | 'blogs';
 }
 
 export const Header: React.FC<HeaderProps> = ({ 
@@ -26,6 +30,10 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigateToSeo,
   onNavigateToFullFunnelLeadGen,
   onNavigateToLocal,
+  onNavigateToNearYou,
+  onNavigateToAbout,
+  onNavigateToContact,
+  onNavigateToBlogs,
   onNavigateHome,
   currentView = 'home'
 }) => {
@@ -86,15 +94,10 @@ export const Header: React.FC<HeaderProps> = ({
       subItems: null
     },
     { 
-      name: 'Resources', 
-      href: '#resources', 
-      hasDropdown: true,
-      subItems: [
-        'Case Studies & ROI Audits',
-        'Marketing ROI Calculator',
-        'Growth Insights Blog',
-        'Free SEO Checklist',
-      ]
+      name: 'Blogs', 
+      href: '#blogs', 
+      hasDropdown: false,
+      subItems: null
     },
   ];
 
@@ -195,6 +198,21 @@ export const Header: React.FC<HeaderProps> = ({
                       onNavigateToLocal();
                       return;
                     }
+                    if (link.name === 'Near You' && onNavigateToNearYou) {
+                      e.preventDefault();
+                      onNavigateToNearYou();
+                      return;
+                    }
+                    if (link.name === 'About Us' && onNavigateToAbout) {
+                      e.preventDefault();
+                      onNavigateToAbout();
+                      return;
+                    }
+                    if (link.name === 'Blogs' && onNavigateToBlogs) {
+                      e.preventDefault();
+                      onNavigateToBlogs();
+                      return;
+                    }
                     if (currentView !== 'home' && onNavigateHome) {
                       e.preventDefault();
                       onNavigateHome();
@@ -210,7 +228,14 @@ export const Header: React.FC<HeaderProps> = ({
                       }
                     }
                   }}
-                  className="flex items-center gap-1 transition-colors hover:text-[#009656] text-neutral-800 py-2 cursor-pointer font-medium"
+                  className={`flex items-center gap-1 transition-colors hover:text-[#009656] py-2 cursor-pointer font-medium ${
+                    (link.name === 'Near You' && currentView === 'near-you') ||
+                    (link.name === 'Local' && currentView === 'local') ||
+                    (link.name === 'About Us' && currentView === 'about') ||
+                    (link.name === 'Blogs' && currentView === 'blogs')
+                      ? 'text-[#009656] font-bold'
+                      : 'text-neutral-800'
+                  }`}
                 >
                   <span>{link.name}</span>
                   {link.hasDropdown && (
@@ -258,14 +283,20 @@ export const Header: React.FC<HeaderProps> = ({
             ))}
           </nav>
 
-          {/* Right CTA Button: Brand Secondary #009656 */}
+          {/* Right CTA Button: Talk to an Expert -> Links to Contact Us */}
           <div className="hidden sm:flex items-center">
             <button
-              onClick={onOpenConsultation}
+              onClick={() => {
+                if (onNavigateToContact) {
+                  onNavigateToContact();
+                } else {
+                  onOpenConsultation();
+                }
+              }}
               className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg text-sm font-bold text-white bg-[#009656] hover:bg-[#007f49] transition-all shadow-md shadow-[#009656]/20 hover:shadow-lg active:scale-95 cursor-pointer"
             >
               <Headphones className="w-4 h-4 text-white" />
-              <span>Get Free Consultation</span>
+              <span>Talk to an Expert</span>
               <ArrowRight className="w-4 h-4 text-white" />
             </button>
           </div>
@@ -273,10 +304,16 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile hamburger button */}
           <div className="lg:hidden flex items-center gap-2">
             <button
-              onClick={onOpenConsultation}
+              onClick={() => {
+                if (onNavigateToContact) {
+                  onNavigateToContact();
+                } else {
+                  onOpenConsultation();
+                }
+              }}
               className="sm:hidden px-3 py-1.5 rounded text-xs font-bold text-white bg-[#009656]"
             >
-              Consult
+              Talk to Expert
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -326,6 +363,21 @@ export const Header: React.FC<HeaderProps> = ({
                       onNavigateToLocal();
                       return;
                     }
+                    if (link.name === 'Near You' && onNavigateToNearYou) {
+                      e.preventDefault();
+                      onNavigateToNearYou();
+                      return;
+                    }
+                    if (link.name === 'About Us' && onNavigateToAbout) {
+                      e.preventDefault();
+                      onNavigateToAbout();
+                      return;
+                    }
+                    if (link.name === 'Blogs' && onNavigateToBlogs) {
+                      e.preventDefault();
+                      onNavigateToBlogs();
+                      return;
+                    }
                     if (currentView !== 'home' && onNavigateHome) {
                       e.preventDefault();
                       onNavigateHome();
@@ -365,7 +417,7 @@ export const Header: React.FC<HeaderProps> = ({
                         setMobileMenuOpen(false);
                         if (onNavigateToFullFunnelLeadGen) onNavigateToFullFunnelLeadGen();
                       }}
-                      className="block text-xs font-semibold text-[#007AFF] hover:underline py-1 text-left"
+                      className="block text-xs font-semibold text-[#001965] hover:text-[#009656] hover:underline py-1 text-left"
                     >
                       &bull; Full-Funnel Lead Generation &rarr;
                     </button>
@@ -388,12 +440,16 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenConsultation();
+                if (onNavigateToContact) {
+                  onNavigateToContact();
+                } else {
+                  onOpenConsultation();
+                }
               }}
-              className="w-full py-3 rounded-lg text-sm font-bold text-white bg-[#009656] hover:bg-[#007f49] flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-lg text-sm font-bold text-white bg-[#009656] hover:bg-[#007f49] flex items-center justify-center gap-2 cursor-pointer shadow-md"
             >
               <Headphones className="w-4 h-4" />
-              <span>Get Free Consultation</span>
+              <span>Talk to an Expert</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

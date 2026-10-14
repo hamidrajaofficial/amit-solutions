@@ -20,12 +20,16 @@ import { ConsultationModal } from './components/ConsultationModal';
 import { SeoServicePage } from './components/services/SeoServicePage';
 import { FullFunnelLeadGenPage } from './components/solutions/FullFunnelLeadGenPage';
 import { LocalSeoPage } from './components/local/LocalSeoPage';
+import { AboutUsPage } from './components/about/AboutUsPage';
+import { NearYouPage } from './components/nearyou/NearYouPage';
+import { ContactUsPage } from './components/contact/ContactUsPage';
+import { BlogsPage } from './components/blog/BlogsPage';
 import { FaqSection } from './components/common/FaqSection';
 import { homeFaqCategories } from './data/faqData';
 
 export default function App() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<'home' | 'seo' | 'lead-gen' | 'local'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'seo' | 'lead-gen' | 'local' | 'about' | 'near-you' | 'contact' | 'blogs'>('home');
 
   const handleNavigateToSeo = () => {
     setCurrentView('seo');
@@ -42,6 +46,26 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavigateToNearYou = () => {
+    setCurrentView('near-you');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateToAbout = () => {
+    setCurrentView('about');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateToContact = () => {
+    setCurrentView('contact');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateToBlogs = () => {
+    setCurrentView('blogs');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleNavigateHome = () => {
     setCurrentView('home');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -55,6 +79,10 @@ export default function App() {
         onNavigateToSeo={handleNavigateToSeo}
         onNavigateToFullFunnelLeadGen={handleNavigateToFullFunnelLeadGen}
         onNavigateToLocal={handleNavigateToLocal}
+        onNavigateToNearYou={handleNavigateToNearYou}
+        onNavigateToAbout={handleNavigateToAbout}
+        onNavigateToContact={handleNavigateToContact}
+        onNavigateToBlogs={handleNavigateToBlogs}
         onNavigateHome={handleNavigateHome}
         currentView={currentView}
       />
@@ -72,6 +100,26 @@ export default function App() {
           />
         ) : currentView === 'local' ? (
           <LocalSeoPage 
+            onOpenConsultation={() => setIsConsultationOpen(true)}
+            onNavigateHome={handleNavigateHome}
+          />
+        ) : currentView === 'about' ? (
+          <AboutUsPage 
+            onOpenConsultation={() => setIsConsultationOpen(true)}
+            onNavigateHome={handleNavigateHome}
+          />
+        ) : currentView === 'near-you' ? (
+          <NearYouPage 
+            onOpenConsultation={() => setIsConsultationOpen(true)}
+            onNavigateHome={handleNavigateHome}
+          />
+        ) : currentView === 'contact' ? (
+          <ContactUsPage 
+            onOpenConsultation={() => setIsConsultationOpen(true)}
+            onNavigateHome={handleNavigateHome}
+          />
+        ) : currentView === 'blogs' ? (
+          <BlogsPage 
             onOpenConsultation={() => setIsConsultationOpen(true)}
             onNavigateHome={handleNavigateHome}
           />
@@ -155,6 +203,9 @@ export default function App() {
         onNavigateToSeo={handleNavigateToSeo}
         onNavigateToFullFunnelLeadGen={handleNavigateToFullFunnelLeadGen}
         onNavigateToLocal={handleNavigateToLocal}
+        onNavigateToNearYou={handleNavigateToNearYou}
+        onNavigateToContact={handleNavigateToContact}
+        onNavigateToBlogs={handleNavigateToBlogs}
       />
 
       {/* Interactive Free Audit / Consultation / Demo Modal */}

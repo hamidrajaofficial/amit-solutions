@@ -61,13 +61,22 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
 
             {/* Main Headline in Primary and Secondary Colors (No Black) */}
             <h2 
-              className="text-2xl sm:text-3xl lg:text-[38px] font-bold tracking-tight leading-[1.2] text-balance"
+              className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight leading-[1.2] text-balance"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               <span className="text-[#001965]">Why Partner With a Leading Agency for </span>
               <span className="text-[#009656]">Measurable Growth, </span>
               <span className="text-[#001965]">Strategy &amp; Performance</span>
             </h2>
+
+            {/* Decorative Brand Divider */}
+            <div className="flex items-center gap-1.5 py-0.5">
+              <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+              <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+            </div>
 
             {/* Narrative text */}
             <p className="text-[1rem] text-neutral-600 leading-relaxed font-normal">

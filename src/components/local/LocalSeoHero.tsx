@@ -42,7 +42,7 @@ export const LocalSeoHero: React.FC<LocalSeoHeroProps> = ({
   };
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-[#EBF5FF] via-[#F4F9FF] to-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-slate-200/80">
+    <section className="relative w-full bg-gradient-to-b from-[#EBF5FF] via-[#F4F9FF] to-white overflow-hidden pt-[30px] pb-16 sm:pb-20 lg:pb-24 border-b border-slate-200/80 hero-section-top-spacing">
       
       {/* Background Graphic Watermark (Subtle Local Maps & Growth Coordinates) */}
       <div 
@@ -67,16 +67,10 @@ export const LocalSeoHero: React.FC<LocalSeoHeroProps> = ({
       />
 
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
           
           {/* Left Column: Heading, Subtitle & Dual Action Buttons (7 Cols on LG) */}
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start space-y-6">
-            
-            {/* Eyebrow Badge in Brand Emerald */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#009656]/10 border border-[#009656]/25 text-[#009656] font-['Outfit',sans-serif] font-bold text-xs sm:text-sm shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-[#009656] animate-pulse" />
-              <span>Google Maps 3-Pack &amp; Local Visibility</span>
-            </div>
 
             {/* H1 Heading in Brand Navy #001965 & Emerald #009656 */}
             <h1 
@@ -140,7 +134,7 @@ export const LocalSeoHero: React.FC<LocalSeoHeroProps> = ({
           </div>
 
           {/* Right Column: High-Fidelity Smartphone Google Maps 3-Pack Showcase (5 Cols on LG) */}
-          <div className="lg:col-span-5 flex justify-center items-center relative">
+          <div className="lg:col-span-5 flex justify-center items-start relative">
             
             {/* Ambient Shadow Pod */}
             <div 

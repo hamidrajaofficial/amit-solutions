@@ -39,7 +39,7 @@ export const ServiceHeroSection: React.FC<ServiceHeroSectionProps> = ({
   overlayClassName,
 }) => {
   return (
-    <section className="relative w-full overflow-hidden py-14 sm:py-20 lg:py-24 border-b border-slate-200/80 bg-slate-900">
+    <section className="relative w-full overflow-hidden pt-[30px] pb-14 sm:pb-20 lg:pb-24 border-b border-slate-200/80 bg-slate-900 hero-section-top-spacing">
       {/* 1. Background image (when provided) */}
       {backgroundImage && (
         <div

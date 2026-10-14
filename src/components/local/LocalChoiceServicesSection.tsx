@@ -57,21 +57,31 @@ export const LocalChoiceServicesSection: React.FC<LocalChoiceServicesSectionProp
         <div className="max-w-4xl text-left mb-10 sm:mb-12">
           
           {/* Eyebrow Pill Outline Badge */}
-          <div className="inline-flex items-center px-4 py-1 rounded-full border border-[#007AFF] text-[#007AFF] text-xs font-bold tracking-wider uppercase mb-5">
-            LOCAL DOMINATION
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#009656]/10 border border-[#009656]/25 text-[#009656] text-xs sm:text-sm font-bold tracking-wider uppercase shadow-xs mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#009656] animate-pulse" />
+            <span>LOCAL DOMINATION</span>
           </div>
 
-          {/* H2 Headline: Two-tone matching screenshot */}
+          {/* H2 Headline in Brand Dual Colors (Navy #001965 & Emerald #009656) */}
           <h2 
-            className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0F172A] leading-tight mb-4"
+            className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight leading-[1.2] mb-3"
             style={{ fontFamily: "'Outfit', sans-serif" }}
           >
-            <span className="text-[#007AFF]">The Right Choice </span>
-            <span>for Local Digital Marketing</span>
+            <span className="text-[#001965]">The Right Choice </span>
+            <span className="text-[#009656]">for Local Digital Marketing</span>
           </h2>
 
+          {/* Decorative Brand Divider */}
+          <div className="flex items-center gap-1.5 py-1 mb-3">
+            <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+            <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+          </div>
+
           {/* Subtitle Description */}
-          <p className="text-[#475569] text-sm sm:text-base leading-relaxed max-w-3xl font-normal">
+          <p className="text-neutral-600 text-[1rem] leading-relaxed max-w-3xl font-normal">
             We don't just optimize listings; we architect local digital presence that drives walk-in traffic and high-intent leads. Experience search engine dominance in your specific area.
           </p>
 
@@ -87,15 +97,15 @@ export const LocalChoiceServicesSection: React.FC<LocalChoiceServicesSectionProp
               return (
                 <div 
                   key={idx}
-                  className="bg-white rounded-[20px] p-6 sm:p-7 border border-[#D4E6FC] shadow-[0_2px_10px_rgba(0,122,255,0.03)] hover:shadow-md hover:border-[#007AFF]/60 transition-all duration-300 flex flex-col justify-start"
+                  className="bg-white rounded-[20px] p-6 sm:p-7 border border-slate-200/80 shadow-[0_2px_10px_rgba(0,25,101,0.03)] hover:shadow-md hover:border-[#009656]/50 transition-all duration-300 flex flex-col justify-start"
                 >
                   {/* Top Row: Icon Container + Title inline */}
                   <div className="flex items-center gap-3.5 mb-3.5">
-                    <div className="w-11 h-11 rounded-[10px] border border-[#007AFF] text-[#007AFF] bg-white flex items-center justify-center shrink-0">
+                    <div className="w-11 h-11 rounded-[10px] border border-[#009656]/40 text-[#009656] bg-[#009656]/5 flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5 stroke-[2]" />
                     </div>
                     <h3 
-                      className="text-[17px] sm:text-[18px] font-bold text-[#007AFF] tracking-tight leading-snug"
+                      className="text-[17px] sm:text-[18px] font-bold text-[#001965] tracking-tight leading-snug"
                       style={{ fontFamily: "'Outfit', sans-serif" }}
                     >
                       {card.title}
@@ -103,7 +113,7 @@ export const LocalChoiceServicesSection: React.FC<LocalChoiceServicesSectionProp
                   </div>
 
                   {/* Description Paragraph */}
-                  <p className="text-[13px] sm:text-[13.5px] text-[#475569] leading-relaxed font-normal">
+                  <p className="text-[13px] sm:text-[13.5px] text-neutral-600 leading-relaxed font-normal">
                     {card.description}
                   </p>
                 </div>
@@ -113,24 +123,24 @@ export const LocalChoiceServicesSection: React.FC<LocalChoiceServicesSectionProp
 
           {/* Right Side: 1 Tall Card (Spans 4 columns on large screens) */}
           <div className="lg:col-span-4 h-full">
-            <div className="h-full bg-white rounded-[20px] p-6 sm:p-8 border border-[#D4E6FC] shadow-[0_2px_10px_rgba(0,122,255,0.03)] hover:shadow-md hover:border-[#007AFF]/60 transition-all duration-300 flex flex-col justify-between items-center text-center">
+            <div className="h-full bg-white rounded-[20px] p-6 sm:p-8 border border-slate-200/80 shadow-[0_2px_10px_rgba(0,25,101,0.03)] hover:shadow-md hover:border-[#009656]/50 transition-all duration-300 flex flex-col justify-between items-center text-center">
               
               <div className="flex flex-col items-center pt-2">
                 {/* Centered Top Icon Container */}
-                <div className="w-12 h-12 rounded-[12px] border border-[#007AFF] text-[#007AFF] bg-white flex items-center justify-center mb-5">
+                <div className="w-12 h-12 rounded-[12px] border border-[#009656]/40 text-[#009656] bg-[#009656]/5 flex items-center justify-center mb-5">
                   <ScanFace className="w-6 h-6 stroke-[2]" />
                 </div>
 
                 {/* Centered Title */}
                 <h3 
-                  className="text-xl sm:text-[22px] font-bold text-[#007AFF] tracking-tight mb-5"
+                  className="text-xl sm:text-[22px] font-bold text-[#001965] tracking-tight mb-5"
                   style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
                   Targeted Local Reach
                 </h3>
 
                 {/* Centered Description Paragraphs */}
-                <div className="space-y-4 text-[13px] sm:text-[13.5px] text-[#475569] leading-relaxed max-w-xs font-normal">
+                <div className="space-y-4 text-[13px] sm:text-[13.5px] text-neutral-600 leading-relaxed max-w-xs font-normal">
                   <p>
                     We bridge the gap between your local business and the people searching for you. Stop losing local customers to competitors.
                   </p>
@@ -145,7 +155,7 @@ export const LocalChoiceServicesSection: React.FC<LocalChoiceServicesSectionProp
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="w-full sm:w-auto px-7 py-3 rounded-lg bg-[#007AFF] hover:bg-[#0062CC] text-white font-['Outfit',sans-serif] font-bold text-sm tracking-wide shadow-xs hover:shadow transition-all duration-200 cursor-pointer text-center"
+                  className="w-full sm:w-auto px-7 py-3 rounded-lg bg-[#009656] hover:bg-[#00ab62] text-white font-['Outfit',sans-serif] font-bold text-sm tracking-wide shadow-xs hover:shadow transition-all duration-200 cursor-pointer text-center"
                 >
                   Boost My Local Reach
                 </button>

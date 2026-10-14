@@ -84,3 +84,9 @@ html {
   animation: text-shimmer-glow 3.5s linear infinite;
   display: inline-block;
 }
+
+/* Global rule: 30px top spacing between header and hero section across all pages */
+.hero-section-top-spacing {
+  padding-top: 30px !important;
+}
+

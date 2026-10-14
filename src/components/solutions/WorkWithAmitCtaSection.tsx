@@ -57,12 +57,21 @@ export const WorkWithAmitCtaSection: React.FC<WorkWithAmitCtaSectionProps> = ({
 
         {/* Main Headline (Outfit font, white with emerald highlight) */}
         <h2 
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-[1.2] max-w-4xl mx-auto mb-5"
+          className="text-2xl sm:text-3xl lg:text-[40px] font-bold text-white tracking-tight leading-[1.2] max-w-4xl mx-auto mb-4"
           style={{ fontFamily: "'Outfit', sans-serif" }}
         >
           <span>{title}</span>
           <span className="text-[#009656]">{titleHighlight}</span>
         </h2>
+
+        {/* Decorative Brand Divider */}
+        <div className="flex items-center justify-center gap-1.5 py-1 mb-4">
+          <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+          <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+          <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+          <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+          <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+        </div>
 
         {/* Subtitle / Description Paragraph */}
         <p className="text-slate-300/90 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-normal">

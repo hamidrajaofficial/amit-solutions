@@ -111,12 +111,21 @@ export const WhyChooseMediaAdvertisingSection: React.FC<WhyChooseMediaAdvertisin
 
             {/* H2 Heading in Brand Dual Tones: Navy #001965 + Emerald #009656 */}
             <h2 
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold tracking-tight leading-[1.18]"
+              className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight leading-[1.2]"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               <span className="text-[#001965]">Why Choose </span>
               <span className="text-[#009656]">Our Media Advertising?</span>
             </h2>
+
+            {/* Decorative Brand Divider */}
+            <div className="flex items-center gap-1.5 py-0.5">
+              <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#009656]" />
+              <div className="w-8 h-0.5 bg-[#009656]/50 rounded-full" />
+            </div>
 
             {/* Description Paragraph */}
             <p className="text-[1rem] sm:text-[17px] text-neutral-600 leading-relaxed font-normal max-w-2xl">

@@ -268,7 +268,7 @@ export const CustomizedSolutionsTabsSection: React.FC<CustomizedSolutionsTabsSec
 
           {/* Main Headline in Dual Brand Colors (Navy #001965 & Emerald #009656) */}
           <h2 
-            className="text-2xl sm:text-3xl lg:text-[42px] font-bold tracking-tight leading-[1.2]"
+            className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight leading-[1.2]"
             style={{ fontFamily: "'Outfit', sans-serif" }}
           >
             <span className="text-[#001965]">Our Services & </span>

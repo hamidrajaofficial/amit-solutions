@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
   ];
 
   return (
-    <section className="w-full relative overflow-hidden pt-4 sm:pt-6 lg:pt-8 border-b border-slate-200/90 bg-[#ebf3fb]">
+    <section className="w-full relative overflow-hidden pt-[30px] border-b border-slate-200/90 bg-[#ebf3fb] hero-section-top-spacing">
       
       {/* 1. Background Video with User's Ice-Blue to White Gradient Overlay with Transparency */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">

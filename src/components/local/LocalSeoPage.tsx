@@ -1,6 +1,7 @@
 import React from 'react';
 import { LocalSeoHero } from './LocalSeoHero';
 import { LocalChoiceServicesSection } from './LocalChoiceServicesSection';
+import { GeoGridSearchSection } from './GeoGridSearchSection';
 import { ChallengeSolutionSection } from '../ChallengeSolutionSection';
 import { ServiceHowWeWorkSection } from '../services/ServiceHowWeWorkSection';
 import { ConsultationRoadmapSection } from '../ConsultationRoadmapSection';
@@ -57,6 +58,11 @@ export const LocalSeoPage: React.FC<LocalSeoPageProps> = ({
 
       {/* 2. The Right Choice for Local Digital Marketing (Matching Screenshot) */}
       <LocalChoiceServicesSection 
+        onOpenConsultation={onOpenConsultation} 
+      />
+
+      {/* 3. GeoGrid Search - Precision Tracking for Local SEO Success */}
+      <GeoGridSearchSection 
         onOpenConsultation={onOpenConsultation} 
       />
 

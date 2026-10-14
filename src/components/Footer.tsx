@@ -14,6 +14,9 @@ interface FooterProps {
   onNavigateToSeo?: () => void;
   onNavigateToFullFunnelLeadGen?: () => void;
   onNavigateToLocal?: () => void;
+  onNavigateToNearYou?: () => void;
+  onNavigateToContact?: () => void;
+  onNavigateToBlogs?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ 
@@ -21,6 +24,9 @@ export const Footer: React.FC<FooterProps> = ({
   onNavigateToSeo,
   onNavigateToFullFunnelLeadGen,
   onNavigateToLocal,
+  onNavigateToNearYou,
+  onNavigateToContact,
+  onNavigateToBlogs,
 }) => {
   return (
     <footer className="w-full bg-[#001040] text-slate-300 border-t border-slate-800">
@@ -155,6 +161,37 @@ export const Footer: React.FC<FooterProps> = ({
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
                   Local SEO &amp; Maps Domination
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => {
+                    if (onNavigateToNearYou) {
+                      onNavigateToNearYou();
+                    } else if (onNavigateToLocal) {
+                      onNavigateToLocal();
+                    } else {
+                      onOpenConsultation();
+                    }
+                  }} 
+                  className="hover:text-white transition-colors cursor-pointer text-left flex items-center gap-1.5"
+                >
+                  <span>Global Presence (Near You)</span>
+                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-[#009656]/30 text-[#009656] font-bold">NEW</span>
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => {
+                    if (onNavigateToBlogs) {
+                      onNavigateToBlogs();
+                    } else {
+                      onOpenConsultation();
+                    }
+                  }} 
+                  className="hover:text-white transition-colors cursor-pointer text-left flex items-center gap-1.5"
+                >
+                  <span>Growth &amp; SEO Blogs</span>
                 </button>
               </li>
               <li>
